@@ -132,37 +132,53 @@ rl.on('line', function(line) {
 	console.log(cardTwo);
 	
 	rl.question("Enter your bet", function(number){
-		console.log(number);
-		console.log("playerPot: " + cards.playerPot);
-		console.log(cardThree);
-		
-		if(cardOne < cardTwo){
-		    if((cardOne < cardThree) && (cardThree < cardTwo)){
-			console.log("You win second card bigger");
-			cards.playerPot = cards.playerPot + number;
-		    }
-		    else{
-			console.log("You lose second card bigger");
-			cards.playerPot = cards.playerPot - number;
-		    }
-		}
-		else if(cardTwo > cardOne){
-		    if((cardTwo < cardThree) && (cardThree < cardOne)){
-			console.log("You win first card bigger");
-			cards.playerPot = cards.playerPot + number;
-		    }
-		    else{
-			console.log("You lose first card bigger");
-			cards.playerPot = cards.playerPot - number;
-		    }
+		if(number > cards.playerPot && parseInt(number) >= parseInt(0)){
+		    console.log("Please enter a valid amount");
 		}
 		else{
-		    console.log("You lose");
-		    cards.playerPot = cards.playerPot - number;
+		    console.log(number);
+		    console.log(cardThree);
+		    
+		    if(cardOne < cardTwo){
+			if((cardOne < cardThree) && (cardThree < cardTwo)){
+			    console.log("You win second card bigger");
+			    cards.playerPot = parseInt(cards.playerPot) + parseInt(number);
+			    cards.pot = parseInt(cards.pot) - parseInt(number);
+			}
+			else{
+			    console.log("You lose second card bigger");
+			    cards.playerPot = parseInt(cards.playerPot) - parseInt(number);
+			    cards.pot = parseInt(cards.pot) + parseInt(number);
+			}
+		    }
+		    else if(cardTwo > cardOne){
+			if((cardTwo < cardThree) && (cardThree < cardOne)){
+			    console.log("You win first card bigger");
+			    cards.playerPot = parseInt(cards.playerPot) + parseInt(number);
+			    cards.pot = parseInt(cards.pot) - parseInt(number);
+			}
+			else{
+			    console.log("You lose first card bigger");
+			    cards.playerPot = parseInt(cards.playerPot) - parseInt(number);
+			    cards.pot = parseInt(cards.pot) + parseInt(number);
+			}
+		    }
+		    else{
+			console.log("You lose");
+			cards.playerPot = parseInt(cards.playerPot) - parseInt(number);
+			cards.pot = parseInt(cards.pot) + parseInt(number);
+		    }
+		    console.log("playerPot: " + cards.playerPot);
+		    console.log("pot: " + cards.pot);
+		    if(cards.playerPot == 0){
+			console.log("No more money! Good bye!");
+			process.exit(0);
+		    }
+		    console.log("Enter 1 to play again, 0 to quit");
+		    rl.prompt();
 		}
-		console.log("Enter 1 to play again, 0 to quit");
-		rl.prompt();
 	    });
+	    
     
     }).on('close',function(){
 	    console.log("Thanks!");
