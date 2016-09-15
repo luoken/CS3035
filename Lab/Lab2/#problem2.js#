@@ -1,0 +1,15 @@
+
+function fizzBuzzCracklePop(){
+    for(var count = 0; count < 100; count++){
+	if(count % 3){
+	    
+	}
+
+	else{
+	    console.log(count);
+	}
+    }
+};
+
+
+fizzBuzzCracklePop();
