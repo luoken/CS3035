@@ -7,8 +7,7 @@ var rl = readline.createInterface(process.stdin, process.stdout);
 	    temp : [],
 	    size: 0,
 	    pot: 200,
-	    playerBank: 50,
-	    playerBet: 0,
+	    playerPot: 50,
 	    map: {},
 
 	    getSuit : function(number){
@@ -92,9 +91,6 @@ var rl = readline.createInterface(process.stdin, process.stdout);
 		}
 	    },
 	    
-	    reshuffle: function(){
-		
-	    }
 	};
 
 
@@ -112,36 +108,57 @@ rl.on('line', function(line) {
 	if (line === "0") rl.close(); 
 
 	//start game play
-	var cardOne = deck.map[deck.deal()];
-	cards.size--;
-	var cardTwo = deck.map[deck.deal()];
-	cards.size--;
-	var cardThree = deck.map[deck.deal()];
-	cards.size--;
-	
-	console.log(cards.size);
+	if(cards.size < 3){
+	    cards.createArray();
+	    cards.shuffle();
+	    cards.changeFaceCards();
+	    cards.size = 52;
+	    var cardOne = deck.map[deck.deal()];
+	    cards.size--;
+	    var cardTwo = deck.map[deck.deal()];
+	    cards.size--;
+	    var cardThree = deck.map[deck.deal()];
+	    cards.size--;
+	}
+	else{
+	    var cardOne = deck.map[deck.deal()];
+	    cards.size--;
+	    var cardTwo = deck.map[deck.deal()];
+	    cards.size--;
+	    var cardThree = deck.map[deck.deal()];
+	    cards.size--;
+	}
 	console.log(cardOne);
 	console.log(cardTwo);
 	
 	rl.question("Enter your bet", function(number){
 		console.log(number);
+		console.log("playerPot: " + cards.playerPot);
 		console.log(cardThree);
 		
 		if(cardOne < cardTwo){
 		    if((cardOne < cardThree) && (cardThree < cardTwo)){
 			console.log("You win second card bigger");
+			cards.playerPot = cards.playerPot + number;
 		    }
 		    else{
 			console.log("You lose second card bigger");
+			cards.playerPot = cards.playerPot - number;
 		    }
 		}
-		else{
+		else if(cardTwo > cardOne){
 		    if((cardTwo < cardThree) && (cardThree < cardOne)){
 			console.log("You win first card bigger");
+			cards.playerPot = cards.playerPot + number;
 		    }
 		    else{
 			console.log("You lose first card bigger");
+			cards.playerPot = cards.playerPot - number;
 		    }
+		}
+		else{
+		    console.log("You lose");
+		    cards.playerPot = cards.playerPot - number;
 		}
 		console.log("Enter 1 to play again, 0 to quit");
 		rl.prompt();
