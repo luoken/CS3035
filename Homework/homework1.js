@@ -91,6 +91,12 @@ var rl = readline.createInterface(process.stdin, process.stdout);
 		}
 	    },
 	    
+	    showShuffleMapped: function(value){
+		for(var i = 0; i < value.length; i++){
+		    console.log(deck.map[value[i]]);
+		}
+	    }
+	    
 	};
 
 
@@ -101,6 +107,9 @@ cards.changeFaceCards();
 cards.getMaped();
 cards.size = 52;
 
+
+
+cards.showShuffleMapped(cards.temp);
 console.log("Welcome! Enter 1 to continue, 0 to quit");
 rl.setPrompt('AceyDeucy> ');
 rl.prompt();
