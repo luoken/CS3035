@@ -95,8 +95,8 @@ var rl = readline.createInterface(process.stdin, process.stdout);
 		for(var i = 0; i < value.length; i++){
 		    console.log(deck.map[value[i]]);
 		}
-	    }
-	    
+	    },
+
 	};
 
 
@@ -118,28 +118,34 @@ rl.on('line', function(line) {
 
 	//start game play
 	if(cards.size < 3){
+	    var one = cards.deal();
+	    var two = cards.deal();
+	    var three = cards.deal();
 	    cards.createArray();
 	    cards.shuffle();
 	    cards.changeFaceCards();
 	    cards.size = 52;
-	    var cardOne = deck.map[deck.deal()];
+	    var cardOne = cards.map[one];
 	    cards.size--;
-	    var cardTwo = deck.map[deck.deal()];
+	    var cardTwo = cards.map[two];
 	    cards.size--;
-	    var cardThree = deck.map[deck.deal()];
+	    var cardThree = cards.map[three];
 	    cards.size--;
 	}
 	else{
-	    var cardOne = deck.map[deck.deal()];
+	    var one = cards.deal();
+	    var two = cards.deal();
+	    var three = cards.deal();
+	    var cardOne = cards.map[one];
 	    cards.size--;
-	    var cardTwo = deck.map[deck.deal()];
+	    var cardTwo = cards.map[two];
 	    cards.size--;
-	    var cardThree = deck.map[deck.deal()];
+	    var cardThree = cards.map[three];
 	    cards.size--;
 	}
 	console.log(cardOne);
 	console.log(cardTwo);
-	
+
 	rl.question("Enter your bet", function(number){
 		if(number > cards.playerPot && parseInt(number) >= parseInt(0)){
 		    console.log("Please enter a valid amount");
@@ -148,26 +154,26 @@ rl.on('line', function(line) {
 		    console.log(number);
 		    console.log(cardThree);
 		    
-		    if(cardOne < cardTwo){
-			if((cardOne < cardThree) && (cardThree < cardTwo)){
-			    console.log("You win second card bigger");
+		    if(cards.getNumber(one) < cards.getNumber(two)){
+			if((cards.getNumber(one) < cards.getNumber(three)) && (cards.getNumber(three) < cards.getNumber(two))){
+			    console.log("You win");
 			    cards.playerPot = parseInt(cards.playerPot) + parseInt(number);
 			    cards.pot = parseInt(cards.pot) - parseInt(number);
 			}
 			else{
-			    console.log("You lose second card bigger");
+			    console.log("You lose");
 			    cards.playerPot = parseInt(cards.playerPot) - parseInt(number);
 			    cards.pot = parseInt(cards.pot) + parseInt(number);
 			}
 		    }
-		    else if(cardTwo > cardOne){
-			if((cardTwo < cardThree) && (cardThree < cardOne)){
-			    console.log("You win first card bigger");
+		    else if(cards.getNumber(two) < cards.getNumber(one)){
+			if((cards.getNumber(two) < cards.getNumber(three)) && (cards.getNumber(three) < cards.getNumber(one))){
+			    console.log("You win");
 			    cards.playerPot = parseInt(cards.playerPot) + parseInt(number);
 			    cards.pot = parseInt(cards.pot) - parseInt(number);
 			}
 			else{
-			    console.log("You lose first card bigger");
+			    console.log("You lose");
 			    cards.playerPot = parseInt(cards.playerPot) - parseInt(number);
 			    cards.pot = parseInt(cards.pot) + parseInt(number);
 			}
