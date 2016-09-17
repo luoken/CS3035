@@ -2,60 +2,47 @@
 var array = [[1,2],[3,4],[5,6]];
 
 console.log(array);
-var finishArray = array.reduce(function(a,b){
-	return a.concat(b);
-    },0);
+console.log(array.reduce(function(a,b){
+	    return a.concat(b);
+	}));
 
-console.log(finishArray);
 
 //problem 2
-
-
-
-
-/*
-function test(people){
-    return function(people){
-	if(people.year <= 1940){
-	    people.generation = "Greatest Generation";
-	}
-	else if(people.year >= 1941 && people.year <= 1965){
-	    people.generation = "Baby Boomers";
-	}
-	else if(people.year >= 1966 && people.year <= 1976){
-	    people.generation = "Generation X";
-	}
-	else if(people.year >= 1977 && people.year <= 1995){
-	    people.generation = "Generation Y";
-	}
-	else{
-	    people.generation = "Millenials";
-	}
-    }
-}
-*/
-//var holdingVariable = people.map(people, test(people));
-
 var people = [
-	      {"name" : "Black Chair", "sex" : "m", "year" : "1940"},
-	      {"name" : "Green Bottle", "sex" : "f", "year" : "1935"},
-	      {"name" : "Gray Watch", "sex" : "m", "year" : "1943"},
-	      {"name" : "Red Book", "sex" : "f", "year" : "1955"},
-	      {"name" : "Levin Perez", "sex" : "f", "year" : "1967"},
-	      {"name" : "Mark Kim", "sex" : "m", "year" : "1975"},
-	      {"name" : "Matthew Johnson", "sex" : "m", "year" : "1978"},
-	      {"name" : "Karen Chen", "sex" : "f", "year" : "1994"},
-	      {"name" : "Ray Chan", "sex" : "m", "year" : "1904"},
-	      {"name" : "Misty Brock", "sex" : "f", "year" : "2000"},
-	      {"name" : "Ash Ketchum", "sex" : "m", "year" : "2005"},
-	      {"name" : "Maggie Simpson", "sex" : "f", "year" : "1997"},
-	      {"name" : "Bart Simpson", "sex" : "m", "year" : "1991"},
+	      {"name" : "Barbs", "year" : "1940"},
+	      {"name" : "Gary", "year" : "1935"},
+	      {"name" : "Gabriel", "year" : "1943"},
+	      {"name" : "Rudy", "year" : "1955"},
+	      {"name" : "Levin", "year" : "1967"},
+	      {"name" : "Mark", "year" : "1975"},
+	      {"name" : "Matthew", "year" : "1978"},
+	      {"name" : "Karen", "year" : "1994"},
+	      {"name" : "Ray", "year" : "1904"},
+	      {"name" : "Misty", "year" : "2000"},
+	      {"name" : "Ash", "year" : "2005"},
+	      {"name" : "Maggie", "year" : "1997"},
+	      {"name" : "Bart", "year" : "1991"},
 	      ]
 
-    /*
-    console.log(people);
-test(people);
-console.log(holdingVariable);
+    people.forEach(function(temp){
+	    if(parseInt(temp.year) <= parseInt(1940)){
+		temp.generation = "Greatest Generation";
+	    }
+	    else if(parseInt(temp.year) >= parseInt(1941) && parseInt(temp.year) <= parseInt(1965)){
+		temp.generation = "Baby Boomers";
+	    }
+	    else if(parseInt(temp.year) >= parseInt(1966) && parseInt(temp.year) <= parseInt(1976)){
+		temp.generation = "Generation X";
+	    }
+	    else if(parseInt(temp.year) >= parseInt(1977) && parseInt(temp.year) <= parseInt(1995)){
+		temp.generation = "Generation Y";
+	    }
+	    else{
+		temp.generation = "Millenials";
+	    }
+	});
+
+console.log(people);
 
 
-*/
+//problem 3
