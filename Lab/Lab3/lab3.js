@@ -1,4 +1,6 @@
 //problem 1
+
+console.log("problem 1");
 var array = [[1,2],[3,4],[5,6]];
 
 console.log(array);
@@ -8,6 +10,9 @@ console.log(array.reduce(function(a,b){
 
 
 //problem 2
+
+
+console.log("problem 2");
 var people = [
 	      {"firstName" : "Barbs", "lastName": "Rodriguez", "year" : "1940"},
 	      {"firstName" : "Gary", "lastName": "Te", "year" : "1935"},
@@ -42,7 +47,23 @@ var people = [
 	    }
 	});
 
-console.log(people);
+people.forEach(console.log);
 
 
 //problem 3
+
+
+console.log("problem 3");
+var problemThree = function(temp){
+    return temp.generation == "Millenials";
+}
+    
+    var filtered = people.filter(problemThree);
+console.log(filtered);
+
+
+var toString = function(temp){
+    return temp.firstName + " " + temp.lastName + ": " + "Pokemon Go Fan";
+}
+    
+    console.log(filtered.map(toString));
