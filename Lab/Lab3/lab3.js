@@ -1,31 +1,40 @@
 //problem 1
+var array = [[1,2],[3,4],[5,6]];
 
-/*
-console.log(reduce(beginArray, function(a){
-	    var newArray = [];
-	    newArray.push(a);
-	},0));
-*/
+console.log(array);
+var finishArray = array.reduce(function(a,b){
+	return a.concat(b);
+    },0);
+
+console.log(finishArray);
 
 //problem 2
 
-function identifier(people){
-    if(people.year <= 1940){
-	people.generation = "Greatest Generation";
-    }
-    else if(people.year >= 1941 && people.year <= 1965){
-	people.generation = "Baby Boomers";
-    }
-    else if(people.year >= 1966 && people.year <= 1976){
-	people.generation = "Generation X";
-    }
-    else if(people.year >= 1977 && people.year <= 1995){
-	people.generation = "Generation Y";
-    }
-    else{
-	people.generation = "Millenials";
+
+
+
+/*
+function test(people){
+    return function(people){
+	if(people.year <= 1940){
+	    people.generation = "Greatest Generation";
+	}
+	else if(people.year >= 1941 && people.year <= 1965){
+	    people.generation = "Baby Boomers";
+	}
+	else if(people.year >= 1966 && people.year <= 1976){
+	    people.generation = "Generation X";
+	}
+	else if(people.year >= 1977 && people.year <= 1995){
+	    people.generation = "Generation Y";
+	}
+	else{
+	    people.generation = "Millenials";
+	}
     }
 }
+*/
+//var holdingVariable = people.map(people, test(people));
 
 var people = [
 	      {"name" : "Black Chair", "sex" : "m", "year" : "1940"},
@@ -42,3 +51,11 @@ var people = [
 	      {"name" : "Maggie Simpson", "sex" : "f", "year" : "1997"},
 	      {"name" : "Bart Simpson", "sex" : "m", "year" : "1991"},
 	      ]
+
+    /*
+    console.log(people);
+test(people);
+console.log(holdingVariable);
+
+
+*/
