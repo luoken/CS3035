@@ -47,7 +47,7 @@ var people = [
 	    }
 	});
 
-people.forEach(console.log);
+console.log(people);
 
 
 //problem 3
