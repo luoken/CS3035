@@ -124,7 +124,7 @@ RTextCell.prototype.draw = function(width, height) {
 };
 
 //problem 1
-
+console.log("Problem 1: ");
 function CenterTextCell(text){
     TextCell.call(this,text);
 }
@@ -150,7 +150,41 @@ var restaurants = [];
 restaurants.push([new CenterTextCell("Bucco de\nBeppo"), new CenterTextCell("$$$")]);
 restaurants.push([new CenterTextCell("Mastro's Ocean\nClub"), new CenterTextCell("$$$$")]);
 restaurants.push([new CenterTextCell("Denny's"), new CenterTextCell("$")]);
-console.log(restaurants);
+
+console.log(drawTable(restaurants));
+console.log();
+
+//problem 2
+console.log("Problem 2: ");
+function BorderTextCell(text) {
+    this.text = text.split("\n");
+}
+
+BorderTextCell.prototype.minWidth = function() {
+    return this.text.reduce(function(width, line) {
+	return Math.max(width, line.length);
+    }, 0);
+};
+
+BorderTextCell.prototype.minHeight = function() {
+    return this.text.length;
+};
+
+BorderTextCell.prototype.draw = function(width, height) {
+    var result = [];
+    result.push(repeat("-", width + 2));
+    for (var i = 0; i < height; i++) {
+	var line = this.text[i] || "";
+	result.push("|" + line + repeat(" ", width - line.length) + "|");
+    }
+	result.push(repeat("-", width + 2));
+    return result;
+};
+
+ var restaurants = [];
+ restaurants.push([new BorderTextCell("Bucco de\nBeppo"), new BorderTextCell("$$$")]);
+ restaurants.push([new BorderTextCell("Mastro's Ocean\nClub"), new BorderTextCell("$$$$")]);
+ restaurants.push([new BorderTextCell("Denny's"), new BorderTextCell("$")]);
 
 
 console.log(drawTable(restaurants));
