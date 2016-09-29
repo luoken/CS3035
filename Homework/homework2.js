@@ -1,8 +1,12 @@
 //array of restaurants you're going to print out.
-var restaurants = [];
-restaurants.push([new TextCell("Bucco de\nBeppo"), new TextCell("$$$")]);
-restaurants.push([new TextCell("Denny's"), new TextCell("$")]);
-console.log(restaurants);
+
+/*
+ var restaurants = [];
+ restaurants.push([new TextCell("Bucco de\nBeppo"), new TextCell("$$$")]);
+ restaurants.push([new TextCell("Mastro's Ocean\nClub"), new TextCell("$$$$")]);
+ restaurants.push([new TextCell("Denny's"), new RTextCell("$")]);
+ console.log(restaurants);
+ */
 
 function rowHeights(rows) {
     return rows.map(function(row) {
@@ -131,15 +135,22 @@ CenterTextCell.prototype.draw = function(width, height){
     var result = [];
     for(var i = 0; i < height; i++){
 	var line = this.text[i] || "";
-	if((width - line.length)%2 == 0){
-	    result.push(repeat(" ", width - line.length) + line);    
+	if((width-line.length)%2 == 0){
+	    
+	    result.push(repeat(" ", Math.floor((width-line.length)/2)) + line + repeat(" ", Math.floor((width - line.length)/2)));
 	}
 	else{
-	    
+	    result.push(repeat(" ", Math.floor((width-line.length)/2))+ " " + line + repeat(" ", Math.floor((width - line.length)/2)));
 	}
     }
-}
+    return result;
+};
+
+var restaurants = [];
+restaurants.push([new CenterTextCell("Bucco de\nBeppo"), new CenterTextCell("$$$")]);
+restaurants.push([new CenterTextCell("Mastro's Ocean\nClub"), new CenterTextCell("$$$$")]);
+restaurants.push([new CenterTextCell("Denny's"), new CenterTextCell("$")]);
+console.log(restaurants);
+
 
 console.log(drawTable(restaurants));
-
-
