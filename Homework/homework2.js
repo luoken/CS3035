@@ -148,7 +148,7 @@ CenterTextCell.prototype.draw = function(width, height){
 
 var restaurants = [];
 restaurants.push([new CenterTextCell("Bucco de\nBeppo"), new CenterTextCell("$$$")]);
-restaurants.push([new CenterTextCell("Mastro's Ocean\nClub"), new CenterTextCell("$$$$")]);
+restaurants.push([new CenterTextCell("Mastro's Ocean\nClub"), new CenterTextCell("$$$$$")]);
 restaurants.push([new CenterTextCell("Denny's"), new CenterTextCell("$")]);
 
 console.log(drawTable(restaurants));
@@ -186,5 +186,79 @@ BorderTextCell.prototype.draw = function(width, height) {
  restaurants.push([new BorderTextCell("Mastro's Ocean\nClub"), new BorderTextCell("$$$$")]);
  restaurants.push([new BorderTextCell("Denny's"), new BorderTextCell("$")]);
 
-
 console.log(drawTable(restaurants));
+console.log();
+
+//problem 3
+function ToUpperRow(row, data){
+
+// restaurants.push([(new BorderTextCell("Bucco de\nBeppo".toUpperCase())), new BorderTextCell("$$$")]);
+}
+
+//problem 5
+console.log("Problem 5:");
+console.log();
+person = [{"name": "Emma de Milliano", "sex": "f",
+   "born": 1876, "died": 1956,
+   "father": "Petrus de Milliano",
+   "mother": "Sophia van Damme"},
+  {"name": "Carolus Haverbeke", "sex": "m",
+   "born": 1832, "died": 1905,
+   "father": "Carel Haverbeke",
+   "mother": "Maria van Brussel"},
+  {"name": "Cad Have", "sex": "m", 
+   "born": 1900, "died": 1905,
+   "father": "Carel Haverbeke", 
+   "mother": "Carel Haverbeke"},
+{"name": "Emma de Milliano", "sex": "f",
+   "born": 1876, "died": 1956,
+   "father": "Petrus de Milliano",
+   "mother": "Sophia van Damme"},
+  {"name": "Carolus Haverbeke", "sex": "m",
+   "born": 1832, "died": 1905,
+   "father": "Carel Haverbeke",
+   "mother": "Maria van Brussel"},
+  {"name": "Cad Have", "sex": "m", 
+   "born": 1900, "died": 1905,
+   "father": "Carel Haverbeke", 
+   "mother": "Carel Haverbeke"},
+{"name": "Emma de Milliano", "sex": "f",
+   "born": 1876, "died": 1956,
+   "father": "Petrus de Milliano",
+   "mother": "Sophia van Damme"},
+  {"name": "Carolus Haverbeke", "sex": "m",
+   "born": 1832, "died": 1905,
+   "father": "Carel Haverbeke",
+   "mother": "Maria van Brussel"},
+  {"name": "Cad Have", "sex": "m", 
+   "born": 1900, "died": 1905,
+   "father": "Carel Haverbeke", 
+   "mother": "Carel Haverbeke"}];
+
+
+//console.log(person[0].name);
+//console.log(new BorderTextCell(person[0].name.toString));
+// Araay.map[row].map.(kahfkahsd)
+
+function drawTable(rows) {
+    var heights = rowHeights(rows);
+    var widths = colWidths(rows);
+    function drawLine(blocks, lineNo) {
+	return blocks.map(function(block) {
+            return block[lineNo];
+	}).join(" ");
+    }
+
+    function drawRow(row, rowNum) {
+	var blocks = row.map(function(cell, colNum) {
+            return cell.draw(widths[colNum], heights[rowNum]);
+	});
+	return blocks[0].map(function(_, lineNo) {
+            return drawLine(blocks, lineNo);
+	}).join("\n");
+    }
+
+    return rows.map(drawRow).join("\n");
+}
+
+console.log(drawTable(dataTable(person)));
