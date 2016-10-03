@@ -1,5 +1,4 @@
 //array of restaurants you're going to print out.
-
 /*
  var restaurants = [];
  restaurants.push([new TextCell("Bucco de\nBeppo"), new TextCell("$$$")]);
@@ -177,14 +176,14 @@ BorderTextCell.prototype.draw = function(width, height) {
 	var line = this.text[i] || "";
 	result.push("|" + line + repeat(" ", width - line.length) + "|");
     }
-	result.push(repeat("-", width + 2));
+    result.push(repeat("-", width + 2));
     return result;
 };
 
- var restaurants = [];
- restaurants.push([new BorderTextCell("Bucco de\nBeppo"), new BorderTextCell("$$$")]);
- restaurants.push([new BorderTextCell("Mastro's Ocean\nClub"), new BorderTextCell("$$$$")]);
- restaurants.push([new BorderTextCell("Denny's"), new BorderTextCell("$")]);
+var restaurants = [];
+restaurants.push([new BorderTextCell("Bucco de\nBeppo"), new BorderTextCell("$$$")]);
+restaurants.push([new BorderTextCell("Mastro's Ocean\nClub"), new BorderTextCell("$$$$")]);
+restaurants.push([new BorderTextCell("Denny's"), new BorderTextCell("$")]);
 
 console.log(drawTable(restaurants));
 console.log();
@@ -192,73 +191,57 @@ console.log();
 //problem 3
 function ToUpperRow(row, data){
 
-// restaurants.push([(new BorderTextCell("Bucco de\nBeppo".toUpperCase())), new BorderTextCell("$$$")]);
+    // restaurants.push([(new BorderTextCell("Bucco de\nBeppo".toUpperCase())), new BorderTextCell("$$$")]);
 }
 
 //problem 5
 console.log("Problem 5:");
 console.log();
-person = [{"name": "Emma de Milliano", "sex": "f",
-   "born": 1876, "died": 1956,
-   "father": "Petrus de Milliano",
-   "mother": "Sophia van Damme"},
-  {"name": "Carolus Haverbeke", "sex": "m",
-   "born": 1832, "died": 1905,
-   "father": "Carel Haverbeke",
-   "mother": "Maria van Brussel"},
-  {"name": "Cad Have", "sex": "m", 
-   "born": 1900, "died": 1905,
-   "father": "Carel Haverbeke", 
-   "mother": "Carel Haverbeke"},
-{"name": "Emma de Milliano", "sex": "f",
-   "born": 1876, "died": 1956,
-   "father": "Petrus de Milliano",
-   "mother": "Sophia van Damme"},
-  {"name": "Carolus Haverbeke", "sex": "m",
-   "born": 1832, "died": 1905,
-   "father": "Carel Haverbeke",
-   "mother": "Maria van Brussel"},
-  {"name": "Cad Have", "sex": "m", 
-   "born": 1900, "died": 1905,
-   "father": "Carel Haverbeke", 
-   "mother": "Carel Haverbeke"},
-{"name": "Emma de Milliano", "sex": "f",
-   "born": 1876, "died": 1956,
-   "father": "Petrus de Milliano",
-   "mother": "Sophia van Damme"},
-  {"name": "Carolus Haverbeke", "sex": "m",
-   "born": 1832, "died": 1905,
-   "father": "Carel Haverbeke",
-   "mother": "Maria van Brussel"},
-  {"name": "Cad Have", "sex": "m", 
-   "born": 1900, "died": 1905,
-   "father": "Carel Haverbeke", 
-   "mother": "Carel Haverbeke"}];
+person = [[{"name": "Emma de Milliano", "sex": "f",
+	    "born": 1876, "died": 1956,
+	    "father": "Petrus de Milliano",
+	    "mother": "Sophia van Damme"},
+	   {"name": "Carolus Haverbeke", "sex": "m",
+	    "born": 1832, "died": 1905,
+	    "father": "Carel Haverbeke",
+	    "mother": "Maria van Brussel"},
+	   {"name": "Cad Have", "sex": "m", 
+	    "born": 1900, "died": 1905,
+	    "father": "Carel Haverbeke", 
+	    "mother": "Carel Haverbeke"}],
+	  [{"name": "Emma de Milliano", "sex": "f",
+	    "born": 1876, "died": 1956,
+	    "father": "Petrus de Milliano",
+	    "mother": "Sophia van Damme"},
+	   {"name": "Carolus Haverbeke", "sex": "m",
+	    "born": 1832, "died": 1905,
+	    "father": "Carel Haverbeke",
+	    "mother": "Maria van Brussel"},
+	   {"name": "Cad Have", "sex": "m", 
+	    "born": 1900, "died": 1905,
+	    "father": "Carel Haverbeke", 
+	    "mother": "Carel Haverbeke"}],
+	  [{"name": "Emma de Milliano", "sex": "f",
+	    "born": 1876, "died": 1956,
+	    "father": "Petrus de Milliano",
+	    "mother": "Sophia van Damme"},
+	   {"name": "Carolus Haverbeke", "sex": "m",
+	    "born": 1832, "died": 1905,
+	    "father": "Carel Haverbeke",
+	    "mother": "Maria van Brussel"},
+	   {"name": "Cad Have", "sex": "m", 
+	    "born": 1900, "died": 1905,
+	    "father": "Carel Haverbeke", 
+	    "mother": "Carel Haverbeke"}]];
 
+var formatted = person.map(function(row, rowNumber){
+    row.map(function(column, columnNumber){
+	var temp = {};
+	temp[row] = column.name;
+	return temp;
+    });
+});
 
-//console.log(person[0].name);
-//console.log(new BorderTextCell(person[0].name.toString));
-// Araay.map[row].map.(kahfkahsd)
+console.log(drawTable(dataTable(formatted)));
+//	temp[row] = "Name: " + row.name + "\n Sex: " + row.sex + "\n Born: " + row.born + "\n Father: " + row.father + "\n Mother: " + row.mother;
 
-function drawTable(rows) {
-    var heights = rowHeights(rows);
-    var widths = colWidths(rows);
-    function drawLine(blocks, lineNo) {
-	return blocks.map(function(block) {
-            return block[lineNo];
-	}).join(" ");
-    }
-
-    function drawRow(row, rowNum) {
-	var blocks = row.map(function(cell, colNum) {
-            return cell.draw(widths[colNum], heights[rowNum]);
-	});
-	return blocks[0].map(function(_, lineNo) {
-            return drawLine(blocks, lineNo);
-	}).join("\n");
-    }
-
-    return rows.map(drawRow).join("\n");
-}
-
-console.log(drawTable(dataTable(person)));
