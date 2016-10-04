@@ -228,19 +228,6 @@ person = [[{"name": "Emma de Milliano", "sex": "f",
 	    "father": "Carel Haverbeke", 
 	    "mother": "Carel Haverbeke"}]];
 
-
-var formatted = person.map(function(row, rowNumber){
-    return row.map(function(column, columnNumber){
-	var people = [];
-	people.push[new TextCell(column.name)];
-	return people;
-    });
-});
-
-var convertToBorderCells = function(x){
-    return (new BorderTextCell(x[1][0].name));
-}
-
 var personToTextCell = function(person){
     return new BorderTextCell("Name: " + person.name + "\nSex: " + person.sex + "\nBorn: " + person.born + "\nDied: " + person.died + "\nFather: " + person.father + "\nMother: " + person.mother);
 }
@@ -250,8 +237,37 @@ var peopleTableToTextCellTable = function(peopleTable){
 	return personArray.map(personToTextCell);
     });
 }
+var peopleTextCell = peopleTableToTextCellTable(person);
+var people = drawTable(peopleTextCell);
 
-console.log(drawTable(peopleTableToTextCellTable(person)));
 
+console.log(people);
+
+//problem 3
 console.log();
 console.log("Problem 3: ");
+
+var toUpperCasePerson = function(person){
+    person.map(function(single){
+	single.toUpperCase();
+    });
+}
+
+var toUpperCaseTable = function(row, peopleTextCells){
+    peopleTextCells.map(function(txtCells){
+	 txtCells.map(function(i){
+	    i.text.forEach(function(o,g){
+			return i.text[g] = o.toUpperCase();
+	    });
+	    
+	});
+    });
+    return peopleTextCells;
+}
+
+console.log(drawTable(toUpperCaseTable(0, peopleTextCell)));
+
+
+console.log();
+
+// restaurants.push([(new BorderTextCell("Bucco de\nBeppo".toUpperCase())), new BorderTextCell("$$$")]);
