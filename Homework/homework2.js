@@ -188,12 +188,6 @@ restaurants.push([new BorderTextCell("Denny's"), new BorderTextCell("$")]);
 console.log(drawTable(restaurants));
 console.log();
 
-//problem 3
-function ToUpperRow(row, data){
-
-    // restaurants.push([(new BorderTextCell("Bucco de\nBeppo".toUpperCase())), new BorderTextCell("$$$")]);
-}
-
 //problem 5
 console.log("Problem 5:");
 console.log();
@@ -234,14 +228,30 @@ person = [[{"name": "Emma de Milliano", "sex": "f",
 	    "father": "Carel Haverbeke", 
 	    "mother": "Carel Haverbeke"}]];
 
+
 var formatted = person.map(function(row, rowNumber){
-    row.map(function(column, columnNumber){
-	var temp = {};
-	temp[row] = column.name;
-	return temp;
+    return row.map(function(column, columnNumber){
+	var people = [];
+	people.push[new TextCell(column.name)];
+	return people;
     });
 });
 
-console.log(drawTable(dataTable(formatted)));
-//	temp[row] = "Name: " + row.name + "\n Sex: " + row.sex + "\n Born: " + row.born + "\n Father: " + row.father + "\n Mother: " + row.mother;
+var convertToBorderCells = function(x){
+    return (new BorderTextCell(x[1][0].name));
+}
 
+var personToTextCell = function(person){
+    return new BorderTextCell("Name: " + person.name + "\nSex: " + person.sex + "\nBorn: " + person.born + "\nDied: " + person.died + "\nFather: " + person.father + "\nMother: " + person.mother);
+}
+
+var peopleTableToTextCellTable = function(peopleTable){
+    return peopleTable.map(function(personArray){
+	return personArray.map(personToTextCell);
+    });
+}
+
+console.log(drawTable(peopleTableToTextCellTable(person)));
+
+console.log();
+console.log("Problem 3: ");
