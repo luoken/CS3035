@@ -243,31 +243,42 @@ var people = drawTable(peopleTextCell);
 
 console.log(people);
 
-//problem 3
 console.log();
-console.log("Problem 3: ");
-
 var toUpperCasePerson = function(person){
     person.map(function(single){
 	single.toUpperCase();
     });
 }
 
-var toUpperCaseTable = function(row, peopleTextCells){
-    peopleTextCells.map(function(txtCells){
-	 txtCells.map(function(i){
-	    i.text.forEach(function(o,g){
-			return i.text[g] = o.toUpperCase();
-	    });
-	    
+var toUpperCaseTable = function(peopleTextCells,rows){
+    return peopleTextCells.map(function(txtCells,index){
+	return txtCells.map(function(cell){
+	    if(rows == index){
+		return new BorderTextCell(String(cell.text).split(",").join("\n").toUpperCase());
+	    }
+	    else{
+		return new BorderTextCell(String(cell.text).split(",").join("\n"));
+	    }
 	});
     });
-    return peopleTextCells;
 }
-
-console.log(drawTable(toUpperCaseTable(0, peopleTextCell)));
-
 
 console.log();
 
-// restaurants.push([(new BorderTextCell("Bucco de\nBeppo".toUpperCase())), new BorderTextCell("$$$")]);
+var toUpperCaseCol = function(peopleTextCells, cols){
+    console.log(cols);
+    return peopleTextCells.map(function(txtCells, rowNumber){
+	return txtCells.map(function(cell, colNumber){
+	    if(cols == colNumber){
+		return new BorderTextCell(String(cell.text).split(",").join("\n").toUpperCase());
+	    }
+	    else{
+		return new BorderTextCell(String(cell.text).split(",").join("\n"));
+	    }
+	});
+    });
+};
+
+console.log("Problem 6");
+
+console.log(drawTable(toUpperCaseCol(toUpperCaseTable(peopleTextCell, 0), 2)));
