@@ -266,7 +266,6 @@ var toUpperCaseTable = function(peopleTextCells,rows){
 console.log();
 
 var toUpperCaseCol = function(peopleTextCells, cols){
-    console.log(cols);
     return peopleTextCells.map(function(txtCells, rowNumber){
 	return txtCells.map(function(cell, colNumber){
 	    if(cols == colNumber){
