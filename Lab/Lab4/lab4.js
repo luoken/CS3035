@@ -57,16 +57,21 @@ var arrayOfStrings = [sentence1, sentence2, sentence3];
 console.log();
 console.log("Problem 4");
 function test(arrayOfStrings){
-    if(outerWrapper(arrayOfStrings[0]) == true){
-	return console.log("Sentence 1: Passed");
+var owa0 = outerWrapper(arrayOfStrings[0]);
+
+    if(String(owa0) == String(sentence1.split(" "))){
+		return console.log("Sentence 1: Passed");
 	}
-    if(outerWrapper(arrayOfStrings[1])){
+    if(String(owa0) == String(sentence2.split(" "))){
 	return console.log("Sentence 2: Passed");
 	}
-    if(outerWrapper(arrayOfStrings[2])){
+	else{
+		return console.log("fail");
+	}
+    if(outerWrapper(arrayOfStrings[2]) == sentence3){
 	return console.log("Sentence 3: Passed");
 	}
 
 }
 
-test();
+test(arrayOfStrings);
