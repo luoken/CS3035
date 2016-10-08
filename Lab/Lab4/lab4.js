@@ -51,9 +51,7 @@ var sentence2 = "this is sentence two";
 var sentence3 = "this is sentence three";
 console.log(outerWrapper(sentence1));
 
-console.log();
-console.log("test");
-console.log(stringToArray(sentence1));
+
 var arrayOfStrings = [sentence1, sentence2, sentence3];
 //problem 4
 console.log();
@@ -61,30 +59,26 @@ console.log("Problem 4");
 function test(arrayOfStrings){
 
     var arrayHolder = [];
-//    for(var i = 0; i < arrayOfStrings.length; i++){
 
-	if(String(outerWrapper(arrayOfStrings[0])) == String(sentence1.split(" "))){
-	    arrayHolder.push('True');
-	}
-	else{
-	    arrayHolder.push('False');
-	}
-	if(String(outerWrapper(arrayOfStrings[1])) == String(sentence2.split(" "))){
-	    arrayHolder.push('True');
-	}
-	else{
-	    arrayHolder.push('False');
-	}
-	if(String(outerWrapper(arrayOfStrings[2])) == String(sentence3.split(" "))){
-	   arrayHolder.push('True');
-	}
-	else{
-	    arrayHolder.push('False');
-	}
-//    }
-    
-    console.log(arrayHolder.length);
-    
+    if(String(outerWrapper(arrayOfStrings[0])) == String(sentence1.split(" "))){
+	arrayHolder.push('True');
+    }
+    else{
+	arrayHolder.push('False');
+    }
+    if(String(outerWrapper(arrayOfStrings[1])) == String(sentence2.split(" "))){
+	arrayHolder.push('True');
+    }
+    else{
+	arrayHolder.push('False');
+    }
+    if(String(outerWrapper(arrayOfStrings[2])) == String(sentence3.split(" "))){
+	arrayHolder.push('True');
+    }
+    else{
+	arrayHolder.push('False');
+    }
+
     for(var temp = 0; temp < arrayHolder.length; temp++){
 	console.log("Sentence " + (temp + 1) + ": " + arrayHolder[temp]) ;
     }
