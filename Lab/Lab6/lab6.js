@@ -1,15 +1,11 @@
 var fs = require("fs");
 var file = "lab6.html";
-var holder;
-
-
 
 var fileToString = function(fileName){
     var fileText;
     fileText = fs.readFileSync(fileName, "utf8");
     return fileText;
 }
-
 
 console.log(fileToString(file));
 
